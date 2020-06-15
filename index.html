@@ -4,13 +4,25 @@
 	<meta charset="utf-8">
 	<title>Minha Engine</title>
 
+		<!-- centralizar o canvas no html -->
+	<style>
+		canvas{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;
+			margin: auto;
+			}
+	</style>
+
 	<script>
 
 		//variáveis do jogo
 		var canvas, ctx, ALTURA, LARGURA, frames = 0;
 
 		//idenficar
-		function clique() {
+		function clique(event) {
 
 		}
 
@@ -18,7 +30,25 @@
 
 		//função principal
 		function main() {
+			ALTURA = window.innerHeight;
+			LARGURA = window.innerWidth;
 
+			if (LARGURA >= 500) {
+				LARGURA = 600;
+				ALTURA = 600;
+			}
+
+			canvas = document.createElement("canvas");
+			canvas.width = LARGURA;
+			canvas.height = ALTURA;
+			canvas.style.border = "1px solid #000"; 
+
+			//elemento em 2d
+			ctx = canvas.getContext("2d");
+
+			document.body.appendChild(canvas);
+
+			document.addEventListener("mousedown", clique);
 		}
 
 
