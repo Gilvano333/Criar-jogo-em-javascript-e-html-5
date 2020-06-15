@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Minha Engine</title>
 
-		<!-- centralizar o canvas no html -->
+	<!-- centralizar o canvas no html -->
 	<style>
 		canvas{
 			position: absolute;
@@ -15,7 +15,9 @@
 			margin: auto;
 			}
 	</style>
-
+	
+</head>
+<body>
 	<script>
 
 		//variáveis do jogo
@@ -23,9 +25,8 @@
 
 		//idenficar
 		function clique(event) {
-
+			alert("Clicou!");
 		}
-
 
 
 		//função principal
@@ -41,7 +42,7 @@
 			canvas = document.createElement("canvas");
 			canvas.width = LARGURA;
 			canvas.height = ALTURA;
-			canvas.style.border = "1px solid #000"; 
+			canvas.style.border = "2px solid #000"; 
 
 			//elemento em 2d
 			ctx = canvas.getContext("2d");
@@ -49,24 +50,30 @@
 			document.body.appendChild(canvas);
 
 			document.addEventListener("mousedown", clique);
+
+			roda();
 		}
 
 
 		//roda o jogo
 		function roda() {
+			atualiza();
+			desenha();
 
+			window.requestAnimationFrame(roda);
 		}
 
 
 		//atualiza o status do nosso personagem
 		function atualiza() {
-
+			frames++;
 		}
 
 
 		//desenhar o nosso personagem
 		function desenha() {
-
+			ctx.fillStyle = "#50beff";
+			ctx.fillRect(0,0, LARGURA, ALTURA);
 		}
 
 
@@ -76,8 +83,5 @@
 		main();
 
 	</script>
-</head>
-<body>
-
 </body>
 </html>
